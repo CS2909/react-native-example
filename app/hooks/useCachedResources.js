@@ -11,18 +11,19 @@ export default function useCachedResources() {
     async function loadResourcesAndDataAsync() {
       try {
         SplashScreen.preventAutoHideAsync();
-
         // Load fonts
         await Font.loadAsync({
           ...Ionicons.font,
-          'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+          'space-mono': require('../../assets/fonts/SpaceMono-Regular.ttf'),
         });
       } catch (e) {
-        // We might want to provide this error information to an error reporting service
+        // We might waYnt to provide this error information to an error reporting service
         console.warn(e);
       } finally {
-        setLoadingComplete(true);
-        SplashScreen.hideAsync();
+        setTimeout(() => {
+          setLoadingComplete(true);
+          SplashScreen.hideAsync();
+        }, 3000)
       }
     }
 
